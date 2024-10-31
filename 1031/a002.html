@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <script>
+        let store_all = "<br>";
+        function function1(){
+            let i, s = 1, n;
+            let result = "<br>";
+            let number = document.getElementById('input1');
+            let feedback = document.getElementById('feedback1');
+            n = parseInt(number.value);
+            let control = true;
+            if(n < 2){
+                result += "數值太小!!!";
+                control = false;
+            }
+            i = 2;
+            do{
+                s *= i;
+                i += 2;
+            } while (i <= n);
+            if(control){
+                feedback.innerHTML = "<font color = green>" + s + "</font>";
+            }
+            else{
+                feedback.innerHTML = "<font color = green>" + result + "</font>";
+            }
+            store_all += "2 * 4 * 6 ... *" + number.value + "=" + feedback.innerHTML + "<br>";
+        }
+        function function2(){
+            let i, total = 0, n;
+            let result = "<br>";
+            let number = document.getElementById('input2');
+            let feedback = document.getElementById('feedback2');
+            i = 1;
+            let control = true;
+            n = parseInt(number.value);
+            if(n < 1){
+                result += "數值太小!!!";
+                control = false;
+            }
+            while(i <= n){
+                total += (i * (i + 1));
+                i += 1;
+            }
+            if(control){
+                feedback.innerHTML = "<font color = pink>" + total + "</font>";
+            }
+            else{
+                feedback.innerHTML = "<font color = pink>" + result + "</font>";
+            }
+            store_all += "1 * 2 + 2 * 3 + ... +" + number.value + "=" + feedback.innerHTML + "<br>";
+        }
+        function function3(){
+            let i, total = 0, n;
+            let result = "<br>";
+            let number = document.getElementById('input3');
+            let feedback = document.getElementById('feedback3');
+            i = 1;
+            let control = true;
+            n = parseInt(number.value);
+            if(n < 1){
+                result += "數值太小!!!";
+                control = false;
+            }
+            while(i <= n){
+                total += (i * (i + 1));
+                i += 2;
+            }
+            if(control){
+                feedback.innerHTML = "<font color = blue>" + total + "</font>";
+            }
+            else{
+                feedback.innerHTML = "<font color = blue>" + result + "</font>";
+            }
+            store_all += "1 * 2 + 3 * 4 + ... +" + number.value + "=" + feedback.innerHTML + "<br>";
+        }
+        function function4(){
+            let count = 0, p = 2, i, n;
+            let result = "";
+            let number = document.getElementById('input4');
+            n = parseInt(number.value);
+            let original = n;
+            let feedback = document.getElementById('feedback4');
+            if(n < 1){
+                feedback.innerHTML = "<br>數值太小!!!";
+                return;
+            }
+            if(n == 1){
+                feedback.innerHTML = "<br>1";
+                return;
+            }
+            // result += n + "=";
+            // alert(result);
+            for(i = 2; i * i <= n; i ++){
+                while(n % i == 0){
+                    if(count == 0){
+                        result += i;
+                    }
+                    else{
+                        result += "*";
+                        result += i;
+                    }
+                    count += 1;
+                    n /= i;
+                }
+            }
+            if(n > 1){
+                if(count != 0){
+                    result += "*";
+                }
+                result += n;
+                count += 1;
+            }
+            if(count >= 2){
+                feedback.innerHTML = "<font color = orange>" + "<br>" + original + "=" + result + "</font>";
+            }
+            else{
+                feedback.innerHTML = "<font color = orange>" + "<br>" + original + "=" + "1*" + result + "</font>";
+            }
+            store_all += "質因數分解:" + feedback.innerHTML + "<br>";
+        }
+        function function5(){
+            let feedback = document.getElementById('feedback5');
+            feedback.innerHTML = store_all;
+        }
+    </script>
+    <body>
+        2 * 4 * 6 ... *<input type = text id = input1 size = 1><button onclick = function1()>=</button>&nbsp;<span id = feedback1>?</span><br>
+        1 * 2 + 2 * 3 + ... +<input type = text id = input2 size = 1>* (? + 1)<button onclick = function2()>=</button>&nbsp;<span id = feedback2>?</span><br>
+        1 * 2 + 3 * 4 + ... +<input type = text id = input3 size = 1>* (? + 1)<button onclick = function3()>=</button>&nbsp;<span id = feedback3>?</span><br>
+        input position integer:<input type = text id = input4 size = 1><button onclick = function4()>質因數分解</button>&nbsp;<span id = feedback4>?</span><br>
+        <button onclick = function5()>歷史紀錄</button><span id = feedback5>無</span>
+    </body>
+</html>
