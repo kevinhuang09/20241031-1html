@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <script>
+        function forLoop(){
+            let i, s = 0, n;
+            let ref1 = document.getElementById('in1');
+            let ref2 = document.getElementById('op1');
+            n = parseInt(ref1.value);
+
+            // for method one
+            // for(i = 1; i <= n; i++){
+            //     s += i;
+            // }
+
+            // for method two
+            
+            i = 1;
+            for(;i <= n;){s += i; i += 1}
+
+            // for method three
+            //for(s = 0, i = 1; i <= n; s += i, i ++);
+
+            ref2.innerHTML = "<font color = red>" + s + "</font>";
+        }
+        function whileLoop(){
+            let i, s = 0, n;
+            let ref1 = document.getElementById('in2');
+            let ref2 = document.getElementById('op2');
+            i = 1;
+            n = parseInt(ref1.value);
+            while(i <= n){
+                s += i;
+                i += 2;
+            }
+            ref2.innerHTML = "<font color = green>" + s + "</font>"
+        }
+        function doWhileLoop(){
+            let i, s = 1, n;
+            let ref1 = document.getElementById('in3');
+            let ref2 = document.getElementById('op3');
+            n = parseInt(ref1.value);
+            i = n;
+            do{
+                s *= i;
+                i -= 2;
+            } while(i >= 1);
+            ref2.innerHTML = "<font color = blue>" + s + "</font>"
+        }
+        function prime(){
+            var i,rec = "<br>", n;
+            let ref1 = document.getElementById('in4');
+            let ref2 = document.getElementById('op4');
+            n = parseInt(ref1.value);
+            let prime = true;
+            i = 2;
+            if(n <= 1){
+                prime = false;
+                rec += "數值太小<br>";
+            }
+            while(i <= n - 1 && n >= 1){
+                if(n % i == 0){
+                    prime = false;
+                    rec += "被" + i + "整除<br>";
+                    break;
+                }
+                else{
+                    rec += "不會被" + i + "整除<br>";
+                    i ++;
+                }
+            }
+            if(prime){
+                rec += n + "是質數";
+            }
+            else{
+                rec += n + "不是質數";
+            }
+            ref2.innerHTML = "<font color = pink>" + rec + "</font>";
+        }
+    </script>
+    <body>
+        1+2+3...+<input type = text id = in1 size = 1><button onclick = 'forLoop();'>=</button>&nbsp;<span id = op1>?</span><br>
+        1+3+5...+<input type = text id = in2 size = 1><button onclick = 'whileLoop();'>=</button>&nbsp;<span id = op2>?</span><br>
+        <input type = text id = in3 size = 1>* ... *5 * 3 * 1<button onclick = 'doWhileLoop();'>=</button>&nbsp;<span id = op3>?</span><br>
+        輸入正整數(>=2)<input type = text id = in4 size = 1><button onclick = 'prime();'>judge prime</button><span id = op4>?</span><br>
+    </body>
+</html>
